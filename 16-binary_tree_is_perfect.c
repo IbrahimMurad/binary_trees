@@ -3,13 +3,13 @@
 
 
 /**
- * my_height - measures the height of a binary tree
+ * my_height1 - measures the height of a binary tree
  * @tree: a pointer to the root node of the tree to measure the height.
  *
  * Return: the height of the tree or 0 if tree is NULL
 */
 
-int my_height(const binary_tree_t *tree)
+int my_height1(const binary_tree_t *tree)
 {
 	int height, left_height, right_height;
 
@@ -20,12 +20,12 @@ int my_height(const binary_tree_t *tree)
 		return (0);
 
 	if (tree->left)
-		left_height = 1 + my_height(tree->left);
+		left_height = 1 + my_height1(tree->left);
 	else
 		left_height = 1;
 
 	if (tree->right)
-		right_height = 1 + my_height(tree->right);
+		right_height = 1 + my_height1(tree->right);
 	else
 		right_height = 1;
 
@@ -39,7 +39,7 @@ int my_height(const binary_tree_t *tree)
 
 
 /**
- * my_balance - checks if the tree is balanced
+ * is_balanced - checks if the tree is balanced
  * @tree: a pointer to the root node of the tree
  * to check for its balance
  *
@@ -53,8 +53,8 @@ int is_balanced(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	left_height = my_height(tree->left);
-	right_height = my_height(tree->right);
+	left_height = my_height1(tree->left);
+	right_height = my_height1(tree->right);
 	if (left_height == right_height)
 		return (1);
 	else
@@ -102,8 +102,13 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	if (is_full(tree) && is_balanced(tree))
-		return (1);
+	if (tree->left && tree->right)
+	{
+		if (is_full(tree) && is_balanced(tree))
+			return (1);
+		else
+			return (0);
+	}
 	else
 		return (0);
 }
