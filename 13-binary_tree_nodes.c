@@ -14,10 +14,13 @@ size_t binary_tree_nodes(const binary_tree_t *tree)
 	non_leaf = 0;
 	if (!tree)
 		return (0);
-	if (binary_tree_is_leaf(tree))
+	if (tree->left || tree->right)
+	{
+		non_leaf++;
+		non_leaf += binary_tree_nodes(tree->left);
+		non_leaf += binary_tree_nodes(tree->right);
+		return (non_leaf);
+	}
+	else
 		return (0);
-	non_leaf++;
-	non_leaf += binary_tree_nodes(tree->left);
-	non_leaf += binary_tree_nodes(tree->right);
-	return (non_leaf);
 }
