@@ -50,9 +50,13 @@ int is_balanced(const binary_tree_t *tree)
 {
 	int left_height, right_height;
 
+	if (!tree)
+		return (1);
 	left_height = my_height1(tree->left);
 	right_height = my_height1(tree->right);
-	if (left_height == right_height)
+	if (left_height == right_height &&
+		is_balanced(tree->left) &&
+		is_balanced(tree->right))
 		return (1);
 	else
 		return (0);
