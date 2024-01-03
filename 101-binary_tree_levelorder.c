@@ -44,6 +44,25 @@ vl_node *tree_to_list(const binary_tree_t *tree, vl_node *head, int level)
 }
 
 /**
+ * free_list - frees vl_node linked list
+ * @head: a pointer to the head node of the list
+ *
+ * Return: Nothing
+*/
+
+void free_list(vl_node *head)
+{
+	vl_node *temp = head;
+
+	while (temp)
+	{
+		head = temp->next;
+		free(temp);
+		temp = head;
+	}
+}
+
+/**
  * my_height2 - measures the height of a binary tree
  * @tree: a pointer to the root node of the tree to measure the height.
  *
@@ -108,4 +127,5 @@ void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 		}
 		temp = head;
 	}
+	free_list(head);
 }
