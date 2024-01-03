@@ -21,6 +21,15 @@ struct binary_tree_s
 
 typedef struct binary_tree_s binary_tree_t;
 
+struct value_level_n
+{
+	int value;
+	int level;
+	struct value_level_n *next;
+};
+
+typedef struct value_level_n vl_node;
+
 void binary_tree_print(const binary_tree_t *);
 
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
@@ -62,5 +71,7 @@ binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 
 binary_tree_t *binary_trees_ancestor(binary_tree_t *first, binary_tree_t *second);
+
+void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
 
 #endif
