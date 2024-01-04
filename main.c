@@ -10,8 +10,7 @@ int main(void)
 {
     bst_t *tree;
     int array[] = {
-        79, 47, 68, 87, 84, 91, 21, 32, 34, 2,
-        20, 22, 98, 1, 62, 95
+        1, 1, 1, 1, 1, 1, 1, 1, 1
     };
     size_t n = sizeof(array) / sizeof(array[0]);
 
