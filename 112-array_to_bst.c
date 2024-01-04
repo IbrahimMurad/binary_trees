@@ -58,6 +58,8 @@ bst_t *array_to_bst(int *array, size_t size)
 	bst_t *tree = NULL, *node;
 	size_t i;
 
+	if (!array)
+		return (NULL);
 	size = remove_doublicate(array, size);
 	for (i = 0; i < size; i++)
 	{
